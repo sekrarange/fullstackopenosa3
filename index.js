@@ -1,6 +1,12 @@
+const PORT = process.env.PORT || 3001;
+
 const express = require("express");
 const morgan = require("morgan");
+const cors = require("cors");
 const app = express();
+
+app.use(cors());
+app.use(express.static("build"));
 
 app.use(express.json());
 
@@ -78,4 +84,4 @@ app.delete("/api/persons/:id", (req, res) => {
   res.status(204).end();
 });
 
-app.listen(3001);
+app.listen(PORT);
